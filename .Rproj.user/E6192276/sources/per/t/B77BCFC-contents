@@ -1,0 +1,19 @@
+
+library(rvest)
+library(dplyr)
+
+# save url 
+vix.url <- read_html("http://www.cboe.com/data/current-market-statistics/daily-market-statistics-all-cboe?Dy=25&Mo=4&Yr=2019")
+
+# scrape tables from url into a list 
+vix.tbls <-vix.url %>%
+  # gets all tables 
+  html_nodes("table") %>%
+  html_table(header = TRUE, fill = TRUE, trim = TRUE)
+
+for (i in seq_along(vix.tbls)) {
+  tbl.name <- paste("vix.tbl",i,sep=".")
+  x <- as.data.frame(vix.tbls[[i]])
+  assign(tbl.name,x)
+}
+rm(x)

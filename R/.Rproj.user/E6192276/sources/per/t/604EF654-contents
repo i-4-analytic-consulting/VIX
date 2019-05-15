@@ -1,0 +1,28 @@
+
+# load packages
+library(rvest)
+library(dplyr)
+getwd()
+
+# save selectors for tables and table caption
+csstbls <- 'table'  
+csstblname <- '.pTableCaptionCMT'
+
+#  creates funtion to scrape tables from webpage a url 
+scrapetbls <- function(url) {
+  # scrape tables from url into a list 
+  tbls <- url %>%
+    # gets all tables 
+    html_nodes(csstbls) %>%
+    html_table(header = TRUE, fill = TRUE)
+}
+
+# creates function for getting table captions (names)
+tblnames <- function(url){
+      tbl_names <- url %>%
+      # gets all table names 
+      html_nodes(csstblname)%>%
+      html_text()
+    # coerce vector to a list 
+    tbl_names <- list(tbl_names)
+}

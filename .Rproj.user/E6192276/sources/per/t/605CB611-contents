@@ -1,0 +1,48 @@
+###
+# scrape url and manipulate data
+##
+
+library(rvest)
+library(dplyr)
+
+getwd()
+setwd("IF NEEDED")
+
+# save url 
+# copy and paste url here
+url <- read_html("copy and paste url here")
+
+# scrape all tables from url into a list with scrapetbls() 
+tbls <- scrapetbls(url)
+
+# get all tbl namesfrom url into a list with tblnames() 
+names <- tblnames(url)
+
+#  rename tables in list 'tbls'
+# export tables to csv in wd
+# loop for names
+for(i in seq_along(names)){
+  # loop for tbls 
+  for (i in seq_along(tbls)) {
+    
+    # get table name 
+    tbl.name <- names[[1]][i]
+    # rename list object
+    names(tbls)[[i]] <- tbl.name
+    
+    # creates df outside of list in R
+    x <- as.data.frame(tbls[[i]])
+    # assigns table names
+    assign(tbl.name,x)
+    
+    # loop for exporting
+    for(i in names(tbls)){
+      # export dataframes
+      write.csv(tbls[[i]], paste0(i,".csv"))
+    }
+  }
+  rm(x,i,tbl.name)
+}
+
+# view 1st df in list 
+tbls[[1]]

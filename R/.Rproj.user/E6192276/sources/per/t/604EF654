@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1557265956220.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4266222797",
+    "id" : "604EF654",
+    "lastKnownWriteTime" : 1556834055,
+    "last_content_update" : 1556834055,
+    "path" : "F:/R Projects/Web Scraping/scrapetbl_fun.r",
+    "project_path" : null,
+    "properties" : {
+        "cursorPosition" : "9,0",
+        "scrollLine" : "0"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
